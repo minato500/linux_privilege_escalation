@@ -1,4 +1,6 @@
 ## LINUX PRIVILEGE ESCALATION
+
+![image](images/lp.png)
 			    
 ## BASIC STEPS TO CHECK
 

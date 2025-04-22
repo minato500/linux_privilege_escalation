@@ -21,11 +21,11 @@ available in github:maurosoria/dirsearch
 Kernal exploit abuses a vulnerability in the Linux kernel itself to escalate privileges usually from normal user to root
 
 id - used to check the privilege of the user
+
 uname - used gather the information about the systems
 
 check the versions of the kernel,os in exploitdb like there exit
 any vulnerabilities like dirty cow and use that exploit to gain high privilege access
-
 note : Kernel exploits can crash the systems so makes sure to avoid if the attack is happening for company or your system security checkup
 
 ## WEAK PASSWORD AND FILE PERMISSIONS
@@ -33,9 +33,11 @@ note : Kernel exploits can crash the systems so makes sure to avoid if the attac
 I.Check the /etc/shadow is readable if it is readable the we can crack the
 hash to gain the password.
 
-II.check for weak file permission to exploit: sudo -l.
+II.check for weak file permission for executable binaries to exploit: sudo -l.
 
 ## IMPROPER SUDO PERMISSIONS
+
+It is running root command without password using misconfired sudo
 
 I.TryHackMe room : Sudo Security Bypass
 
@@ -226,9 +228,6 @@ command to show the cron job or crontab:
 
         cat /etc/crontab
 
-resourses:
-[PayloadsAllTheThing](https://github.com/swisskyrepo/PayloadsAllTheThings)
-
 similar timer for executing a service or file based on timers
 command to display it : systemctl list-timers --all
 
@@ -299,3 +298,8 @@ Steps(if the user has docker permissions):
 ```
 docker run -v /:/mnt --rm -it bash chroot /mnt sh
 ```
+
+## RESOURCES
+
+[GTFOBins](https://gtfobins.github.io/)
+[PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)

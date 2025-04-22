@@ -83,9 +83,13 @@ find / -type f -perm -04000 -ls 2>/dev/null
 ```
 
 / - search entire system
+
 -type f - only files
+
 -perm -04000 - has SUID bit set
+
 -ls - show output with permissions, owner, size, etc.
+
 2>/dev/null: ignore permission errors
 
 now look the output for the suid bit set and guess which is vulnerable we

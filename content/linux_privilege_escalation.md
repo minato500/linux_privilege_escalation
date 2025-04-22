@@ -250,6 +250,14 @@ tab file>
 
 ## NFS ROOT SQUASHING
 
+NFS(Network File System) allows a system to share directories and files with others over a network.
+
+Root Squashing:
+Usually, NFS uses a security feature called root_squash which maps the root user(UID 0) from a client to a non previleged user on the server, preventing root on client from acting as root on the server
+
+1. root_squash(default) - safer, client root becomes nobody on the server
+2. no_root_squash - dangerous, client root remains root on the server which makes huge security risk
+
 I.The no_root_squash means it sharable and can be mount in simple words
 it has root access
 
@@ -274,5 +282,6 @@ now move to virtual machine or victim computer:
 
 Steps(if the user has docker permissions):
 
-1.docker run -v /:/mnt --rm -it bash chroot /mnt sh
-
+```
+docker run -v /:/mnt --rm -it bash chroot /mnt sh
+```

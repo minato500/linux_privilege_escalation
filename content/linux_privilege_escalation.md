@@ -18,10 +18,15 @@ available in github:maurosoria/dirsearch
 
 ## KERNEL EXPLOIT
 
-I.Command:
-id,uname are used gather the information about the systems and
-user, check the versions of the kernel,os in exploitdb like there exit
-any vulnerabilities like dirty cow.
+Kernal exploit abuses a vulnerability in the Linux kernel itself to escalate privileges usually from normal user to root
+
+id - used to check the privilege of the user
+uname - used gather the information about the systems
+
+check the versions of the kernel,os in exploitdb like there exit
+any vulnerabilities like dirty cow and use that exploit to gain high privilege access
+
+note : Kernel exploits can crash the systems so makes sure to avoid if the attack is happening for company or your system security checkup
 
 ## WEAK PASSWORD AND FILE PERMISSIONS
 
@@ -66,30 +71,39 @@ sudo LD_PRELOAD=/home/user/shell.so apache2
 
 ## IMPROPER SUID PERMISSIONS
 
+SUID(Set User ID) is a special permission on a file that lets a user execute that file with the privilege of the file owner (usually root). So if a file is owned by root and has the SUID bit set, then any user can run it to become a root
+
 I.To find the suid bit is set:
 command:
 
         find / -type f -perm -04000 -ls 2>/dev/null
 
+/ - search entire system
+-type f - only files
+-perm -04000 - has SUID bit set
+-ls - show output with permissions, owner, size, etc.
+2>/dev/null: ignore permission errors
+
 now look the output for the suid bit set and guess which is vulnerable we
 can use the gtfobins for this purposes.
+
+GTFOBins is a database of linux binaries that can be abused for privilege escalation if it has weak sudo and suid configuration is set
 
 ## OTHER SUID VULNERABILITIES
 
 I.Vulnerability based on the shared object injection:
 
-        It also depenpence upon the suid bit, if the suid bit is set for
-the shared object file(.so) it may be vulnerable where an attacker exploits
+It also depenpence upon the suid bit, if the suid bit is set for the shared object file(.so) it may be vulnerable where an attacker exploits
 the way a program loads shared libraries (.so files in Linux) to execute
 arbitrary code. It is similar to DLL Injection in Windows.
-        First find the suid bit that are said for the machine:
-        the command
 
-                find / -type f -perm -04000 -ls 2>/dev/null now look
-.so files
+First find the suid bit that are said for the machine:
+        
+the command:
 
-        To analyse the .so files we can use the strace comment to know what
-it is doing
+                find / -type f -perm -04000 -ls 2>/dev/null 
+
+now look.so files to analyse the .so files we can use the strace comment to know what it is doing
         The command
 
                 strace <file_location> 2>&1

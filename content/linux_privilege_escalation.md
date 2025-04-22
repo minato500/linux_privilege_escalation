@@ -308,11 +308,25 @@ now move to virtual machine or victim computer:
 
 ## DOCKER
 
+If a user can run Docker without sudo (i.e, part of the docker group) they can become root because Docker has root level access to the host
+
 Steps(if the user has docker permissions):
 
 ```
 docker run -v /:/mnt --rm -it bash chroot /mnt sh
 ```
+
+-v /:/mnt - mounts the host filesystem into /mnt inside the container
+
+--rm - automatically deletes the container after exit
+
+-it -  makes it interactive
+
+bash - is the base image
+
+chroot /mnt sh - to make us inside the host system's root / with root privileges
+
+So now we has the root privilege so we can read, write /etc/shadow, add users, install backdoors, etc
 
 ## RESOURCES
 

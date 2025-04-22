@@ -78,7 +78,9 @@ SUID(Set User ID) is a special permission on a file that lets a user execute tha
 I.To find the suid bit is set:
 command:
 
-        find / -type f -perm -04000 -ls 2>/dev/null
+```
+find / -type f -perm -04000 -ls 2>/dev/null
+```
 
 / - search entire system
 -type f - only files
@@ -103,16 +105,23 @@ First find the suid bit that are said for the machine:
         
 the command:
 
-                find / -type f -perm -04000 -ls 2>/dev/null 
+```
+find / -type f -perm -04000 -ls 2>/dev/null 
+```
 
 now look.so files to analyse the .so files we can use the strace comment to know what it is doing
-        The command
 
-                strace <file_location> 2>&1
+The command
 
-        to look for the more easier
+```
+strace <file_location> 2>&1
+```
 
-        strace <file_location> 2>&1 | grep -i -E "open|access|no such file"
+to look for the more easier
+
+```
+strace <file_location> 2>&1 | grep -i -E "open|access|no such file"
+```
 
 by any usable file or content have found overwrite if the file is in user
 directory with read write permissions
@@ -146,7 +155,9 @@ work
 
 The command for the version of the nginix is:
 
-        dpkg -l | grep nginx
+```
+dpkg -l | grep nginx
+```
 
 if the version is less than or equal to 1.6.2 then there exits the
 vulnerability
@@ -161,7 +172,9 @@ execute permission leads to exploit
 link is created and starting or restarting the nginx result as to the
 root but suid is still same as www-data
 
-        The command to restart :invoke-rc.d nginx rotate >/dev/null 2>&1
+```
+The command to restart :invoke-rc.d nginx rotate >/dev/null 2>&1
+```
 
 III.Vulnerability in the environmental variable:
 Environment variable: The variable that are available system wide and are
@@ -226,7 +239,9 @@ I. Most commonly scheduled tasks are known as cron job
 It is a task that executed by the root according to the conditions
 command to show the cron job or crontab:
 
-        cat /etc/crontab
+```
+cat /etc/crontab
+```
 
 similar timer for executing a service or file based on timers
 command to display it : systemctl list-timers --all
@@ -302,4 +317,5 @@ docker run -v /:/mnt --rm -it bash chroot /mnt sh
 ## RESOURCES
 
 [GTFOBins](https://gtfobins.github.io/)
+
 [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
